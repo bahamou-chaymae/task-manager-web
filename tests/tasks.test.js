@@ -23,10 +23,10 @@ test("addTask crée une tâche non terminée", function () {
   assert.strictEqual(tasks[4].done, false);
 });
 
-test("addTask retire les espaces autour du titre", function () {
+test("addTask ignore un titre vide", function () {
   const tasks = defaultTasks();
-  addTask(tasks, " Réviser la CI ");
-  assert.strictEqual(tasks[4].title, "Réviser la CI");
+  addTask(tasks, "   ");
+  assert.strictEqual(tasks.length, 4);
 });
 
 test("toggleTask change le statut d'une tâche", function () {
@@ -40,4 +40,10 @@ test("removeTask supprime uniquement la tâche demandée", function () {
   removeTask(tasks, 0);
   assert.strictEqual(tasks.length, 3);
   assert.strictEqual(tasks[0].title, "Corriger les TP");
+});
+
+test("addTask retire les espaces autour du titre", function () {
+  const tasks = defaultTasks();
+  addTask(tasks, " Réviser la CI ");
+  assert.strictEqual(tasks[4].title, "Réviser la CI");
 });
