@@ -18,8 +18,8 @@ function addTask(tasks, title) {
   if (clean === "") {
     return tasks;
   }
-  tasks.push({ title: clean, done: false });
-  return tasks;
+  tasks.push({ title: clean, done: true });
+    return tasks;
 }
 
 // Inverse le statut (terminée / à faire) de la tâche numéro index.
